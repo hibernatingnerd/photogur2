@@ -1,0 +1,26 @@
+
+
+<div class="newpicture">
+<%= link_to("New", "/pictures/new") %>
+</div>
+
+
+<div class="first">
+  <a><%= link_to(image_tag(@last_photo.url, :size => "500x500"), "/pictures/#{@last_photo.id}") %></a>
+  <p><%=@last_photo.title%> </p>
+  <p><i><%=@last_photo.artist%></i></p>
+</div>
+<section>
+<h2>Recent </h2>
+<div class="grid">
+  <% @pictures_recent.each do |recent| %>
+  <li><%= link_to(image_tag(recent.url), "/pictures/#{recent.id}") %></li>
+  <% end %>
+</div>
+
+<h2>Last month</h2>
+<div class="grid">
+  <% @month_old.each do |picture| %>
+  <li><%= link_to(image_tag(picture.url), "/pictures/#{picture.id}") %></li>
+  <% end %>
+</div>

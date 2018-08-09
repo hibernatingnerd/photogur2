@@ -1,0 +1,11 @@
+<h1>Edit Picture</h1>
+
+<div class="new_edit">
+<div class="forms">
+  <%= render 'form' , picture:@picture %>
+</div>
+
+<p>
+  <%=link_to("back ", "/pictures/#{@picture.id}")%>
+</p>
+</div>

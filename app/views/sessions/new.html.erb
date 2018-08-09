@@ -1,0 +1,22 @@
+<h4>Sign In</h4>
+
+<% if flash[:alert] %>
+<div class="flash"><%= flash[:alert] %></div>
+<% end %>
+
+
+<%= form_for :session, url: sessions_path do |f| %>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <%= f.submit "Login" %>
+
+<% end %>

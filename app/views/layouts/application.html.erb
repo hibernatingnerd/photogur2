@@ -1,40 +1,106 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-  <title>photogur Photography</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
+    <title>photogur Photography</title>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+  </head>
 
-<header>
-<h1>photogur</h1>
-</header>
+  <!-- START: header -->
 
-<nav>
-  <a href="/pictures"><li>Home</li></a>
-</nav>
+  <header role="banner" class="probootstrap-header">
+    <div class="container">
+      <%= link_to "Photogur", pictures_path, class:"probootstrap-logo" %>
+      <a href="#" class="probootstrap-burger-menu visible-xs">
+        <i>Menu</i>
+      </a>
+      <div class="mobile-menu-overlay"></div>
 
-<body>
+      <nav role="navigation" class="probootstrap-nav hidden-xs">
+        <ul class="probootstrap-main-nav">
+          <li class="active">
+              <% if current_user %>
+              <p><%= current_user.email %>|
+              <%= link_to "Post", new_picture_path %>|
+              <%= link_to "Log out", sessions_path, method: :delete %></p>
+              <% else %>
+                <%= link_to "Log in", new_sessions_path %>|
+                <%= link_to "Sign up", new_users_path %>
+              <% end %>
+          </li>
+        </ul>
+        <div class="extra-text visible-xs">
+          <a href="#" class="probootstrap-burger-menu">
+            <i>Menu</i>
+          </a>
+          <h5>Address</h5>
+          <p>198 West 21th Street, Suite 721 New York NY 10016</p>
+          <h5>Connect</h5>
+          <ul class="social-buttons">
+            <li>
+              <a href="#">
+                <i class="icon-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon-facebook2"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon-instagram2"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- END: header -->
+
+  <body>
+
+    <%= yield %>
 
 
-<%= yield %>
-
-
-<p class="userinfo">
-   <% if current_user %>
-
-     Signed in as <%= current_user.email %>. <%= link_to "Log out", sessions_path, method: :delete %>
-   <% else %>
-     <%= link_to "Log in", new_sessions_path %> or <%= link_to "Sign up", new_users_path %>
-   <% end %>
- </p>
-
-
-
-<footer> JC copyright 2018 </footer>
-</body>
+    <footer class="probootstrap-footer" role="contentinfo">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="probootstrap-copyright">© 2017
+              <a href="https://uicookies.com/">uiCookies:Explorer</a>
+              All Rights Reserved.</p>
+            <ul class="probootstrap-social">
+              <li>
+                <a href="#">
+                  <i class="icon-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="icon-facebook2"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="icon-instagram2"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="icon-google-plus"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

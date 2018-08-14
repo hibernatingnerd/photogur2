@@ -10,7 +10,24 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
+//= require jquery_ujs
+//= require popper
+//= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
+//= require owl.carousel
 //= require turbolinks
 //= require_tree .
+
+jQuery(document).ready(function($) {
+	 $('.owl-carousel').owlCarousel({
+		nav: true,
+		items: 1,
+		loop: true,
+		center: true,
+		margin: 0,
+		lazyLoad:true,
+		dots: false
+	});
+ })

@@ -5,7 +5,11 @@ class PicturesController < ApplicationController
   before_action :ensure_user_owns_picture, only: [:edit, :update, :destroy]
 
   def index
-    @pictures_recent = Picture.most_recent_four
+    @pictures_recent = Picture.most_recent_five
+    @pictures_five = []
+    @pictures_recent.each do |p|
+        @pictures_five << p
+    end
     @month_old       = Picture.created_before(Time.now - 1.month)
     @last_photo      = Picture.all.sample
 

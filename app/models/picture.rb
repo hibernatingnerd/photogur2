@@ -13,8 +13,8 @@ class Picture < ApplicationRecord
     Picture.order("created_at DESC")
   end
 
-  def self.most_recent_four
-    Picture.newest_first.limit(4)
+  def self.most_recent_five
+    Picture.newest_first.limit(5)
   end
 
   def self.created_before(time)
